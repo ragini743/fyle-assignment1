@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import OurProject from "./OurProject";
+import Card from "./Card";
 
 const WhatWeDo = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const [cardItem,setCardItem] = useState([]);
-   
+  const [cardItem, setCardItem] = useState([]);
+
   const slides = [
     {
       image: "/images/image1.png",
@@ -25,33 +26,29 @@ const WhatWeDo = () => {
       hoverImage: "/images/image3.png",
     },
   ];
-  const cards =[
+  const cards = [
     {
-        image:"",
-        total:"199 +",
-        discription:"Statisfied Customers",
-
+      image: "/images/heart.png",
+      total: "199 +",
+      discription: "Statisfied Customers",
     },
     {
-        image:"",
-        total:"1591 +",
-        discription:" Days Of Operation",
-
+      image: "/images/watch.png",
+      total: "1591 +",
+      discription: " Days Of Operation",
     },
     {
-        image:"",
-        total:"283 +",
-        discription:"COmplete Project",
-
-    }, 
+      image: "/images/completed.png",
+      total: "283 +",
+      discription: "COmplete Project",
+    },
     {
-        image:"",
-        total:"75 +",
-        discription:"Win Awards",
-
-    }
-
-  ]
+      image: "/images/trophy.png",
+      total: "75 +",
+      discription: "Win Awards",
+    },
+  ];
+  useEffect(() => setCardItem(cards), []);
 
   const handleImageLoad = () => {
     setIsLoaded(true);
@@ -59,7 +56,9 @@ const WhatWeDo = () => {
 
   return (
     <div className="block my-8 md:h-[90vh] ">
-      <h1 className="text-black mb-4 font-bold text-xl md:text-3xl">Services provide for you</h1>
+      <h1 className="text-black mb-4 font-bold text-xl md:text-3xl">
+        Services provide for you
+      </h1>
       <Swiper
         pagination={{ clickable: true }}
         modules={[Pagination]}
@@ -68,14 +67,18 @@ const WhatWeDo = () => {
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div
-              className="relative h-[90%] "  
+              className="relative h-[90%] "
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <img
-                src={`${hoveredIndex === index ? slide.hoverImage : slide.image}?cache-bust=${Date.now()}`}
+                src={`${
+                  hoveredIndex === index ? slide.hoverImage : slide.image
+                }?cache-bust=${Date.now()}`}
                 alt="Slide"
-                className={`w-full h-full object-cover ${isLoaded ? "block" : "hidden"}`} // use object-cover to maintain aspect ratio
+                className={`w-full h-full object-cover ${
+                  isLoaded ? "block" : "hidden"
+                }`} // use object-cover to maintain aspect ratio
                 onLoad={handleImageLoad}
               />
               {!isLoaded && (
@@ -98,11 +101,15 @@ const WhatWeDo = () => {
         ))}
       </Swiper>
       <OurProject />
-      {
-
-      }
-
-
+      <div className="text-center my-10">
+        <h1 className="text-red-500 mb-4">EXPERT GROWTS</h1>
+        <p className="text-3xl font-bold">OUR COMPANY GROWTH </p>
+       </div>
+      <div className="grid grid-cols-4 my-10 gap-8 md:w-[60%] mx-auto ">
+        {cardItem.map((item) => (
+          <Card item={item} />
+        ))}
+      </div>
     </div>
   );
 };
