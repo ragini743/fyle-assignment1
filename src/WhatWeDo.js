@@ -9,6 +9,8 @@ const WhatWeDo = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const [cardItem,setCardItem] = useState([]);
+   
   const slides = [
     {
       image: "/images/image1.png",
@@ -23,6 +25,33 @@ const WhatWeDo = () => {
       hoverImage: "/images/image3.png",
     },
   ];
+  const cards =[
+    {
+        image:"",
+        total:"199 +",
+        discription:"Statisfied Customers",
+
+    },
+    {
+        image:"",
+        total:"1591 +",
+        discription:" Days Of Operation",
+
+    },
+    {
+        image:"",
+        total:"283 +",
+        discription:"COmplete Project",
+
+    }, 
+    {
+        image:"",
+        total:"75 +",
+        discription:"Win Awards",
+
+    }
+
+  ]
 
   const handleImageLoad = () => {
     setIsLoaded(true);
@@ -69,6 +98,10 @@ const WhatWeDo = () => {
         ))}
       </Swiper>
       <OurProject />
+      {
+
+      }
+
 
     </div>
   );
