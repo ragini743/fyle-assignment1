@@ -28,14 +28,14 @@ const OurProject = () => {
         <p className="font-bold text-2xl">WHY WE ARE BEST</p>
         </div>
         <div className="md:flex mt-8 mx-[10%] ">
-        <div className="md:w-[70%] flex-1 mr-8">
+        <div className="md:w-[70%] flex-1 md:mr-8">
         <img
           src={projects[currentIndex].image}
           alt="Project"
           className="w-full h-auto"
         />
       </div>
-      <div className="md:w-[30%]  px-4">
+      <div className=" mt-4 md:mt-0 md:w-[30%]  md:px-4">
         {projects.map((project, index) => (
           <div
             key={index}
